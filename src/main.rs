@@ -34,6 +34,16 @@ fn test_parse_pair() {
     assert_eq!(parse_pair::<f64>("0.5x1.5", 'x'), Some((0.5, 1.5)));
 }
 
+/// Parse a pair of floating-point numbers separated by a comma as a complex
+/// number
+
+fn parse_complex(s: &str) -> Option<Complex<f64>> {
+    match parse_pair(s, ',') {
+        Some((re, im)) => Some(Complex { re, im }),
+        None => None,
+    }
+}
+
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide
 ///
