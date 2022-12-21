@@ -44,6 +44,19 @@ fn parse_complex(s: &str) -> Option<Complex<f64>> {
     }
 }
 
+#[test]
+fn test_parse_complex() {
+    assert_eq!(
+        parse_complex("1.25, -0.0625"),
+        Some(Complex {
+            re: 1.25,
+            im: -0.0625
+        })
+    );
+
+    assert_eq!(parse_complex(",-0.0625"), None);
+}
+
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide
 ///
